@@ -28,7 +28,7 @@ class _$SignInFormEventTearOff {
   }
 
 // ignore: unused_element
-  RegisterEmailAndPasswordPressed registerEmailAndPasswordPressed() {
+  RegisterEmailAndPasswordPressed registerWithEmailAndPasswordPressed() {
     return const RegisterEmailAndPasswordPressed();
   }
 
@@ -53,7 +53,7 @@ mixin _$SignInFormEvent {
   TResult when<TResult extends Object>({
     @required TResult emailChanged(String emailStr),
     @required TResult passwordChanged(String passwordStr),
-    @required TResult registerEmailAndPasswordPressed(),
+    @required TResult registerWithEmailAndPasswordPressed(),
     @required TResult signInWithEmailAndPasswordPressed(),
     @required TResult signInWithGooglePressed(),
   });
@@ -61,7 +61,7 @@ mixin _$SignInFormEvent {
   TResult maybeWhen<TResult extends Object>({
     TResult emailChanged(String emailStr),
     TResult passwordChanged(String passwordStr),
-    TResult registerEmailAndPasswordPressed(),
+    TResult registerWithEmailAndPasswordPressed(),
     TResult signInWithEmailAndPasswordPressed(),
     TResult signInWithGooglePressed(),
     @required TResult orElse(),
@@ -71,7 +71,7 @@ mixin _$SignInFormEvent {
     @required TResult emailChanged(EmailChanged value),
     @required TResult passwordChanged(PasswordChanged value),
     @required
-        TResult registerEmailAndPasswordPressed(
+        TResult registerWithEmailAndPasswordPressed(
             RegisterEmailAndPasswordPressed value),
     @required
         TResult signInWithEmailAndPasswordPressed(
@@ -82,7 +82,7 @@ mixin _$SignInFormEvent {
   TResult maybeMap<TResult extends Object>({
     TResult emailChanged(EmailChanged value),
     TResult passwordChanged(PasswordChanged value),
-    TResult registerEmailAndPasswordPressed(
+    TResult registerWithEmailAndPasswordPressed(
         RegisterEmailAndPasswordPressed value),
     TResult signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
@@ -138,15 +138,23 @@ class _$EmailChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$EmailChanged implements EmailChanged {
+class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
   const _$EmailChanged(this.emailStr) : assert(emailStr != null);
 
   @override
   final String emailStr;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormEvent.emailChanged(emailStr: $emailStr)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignInFormEvent.emailChanged'))
+      ..add(DiagnosticsProperty('emailStr', emailStr));
   }
 
   @override
@@ -172,13 +180,13 @@ class _$EmailChanged implements EmailChanged {
   TResult when<TResult extends Object>({
     @required TResult emailChanged(String emailStr),
     @required TResult passwordChanged(String passwordStr),
-    @required TResult registerEmailAndPasswordPressed(),
+    @required TResult registerWithEmailAndPasswordPressed(),
     @required TResult signInWithEmailAndPasswordPressed(),
     @required TResult signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
-    assert(registerEmailAndPasswordPressed != null);
+    assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return emailChanged(emailStr);
@@ -189,7 +197,7 @@ class _$EmailChanged implements EmailChanged {
   TResult maybeWhen<TResult extends Object>({
     TResult emailChanged(String emailStr),
     TResult passwordChanged(String passwordStr),
-    TResult registerEmailAndPasswordPressed(),
+    TResult registerWithEmailAndPasswordPressed(),
     TResult signInWithEmailAndPasswordPressed(),
     TResult signInWithGooglePressed(),
     @required TResult orElse(),
@@ -207,7 +215,7 @@ class _$EmailChanged implements EmailChanged {
     @required TResult emailChanged(EmailChanged value),
     @required TResult passwordChanged(PasswordChanged value),
     @required
-        TResult registerEmailAndPasswordPressed(
+        TResult registerWithEmailAndPasswordPressed(
             RegisterEmailAndPasswordPressed value),
     @required
         TResult signInWithEmailAndPasswordPressed(
@@ -216,7 +224,7 @@ class _$EmailChanged implements EmailChanged {
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
-    assert(registerEmailAndPasswordPressed != null);
+    assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return emailChanged(this);
@@ -227,7 +235,7 @@ class _$EmailChanged implements EmailChanged {
   TResult maybeMap<TResult extends Object>({
     TResult emailChanged(EmailChanged value),
     TResult passwordChanged(PasswordChanged value),
-    TResult registerEmailAndPasswordPressed(
+    TResult registerWithEmailAndPasswordPressed(
         RegisterEmailAndPasswordPressed value),
     TResult signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
@@ -280,15 +288,25 @@ class _$PasswordChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$PasswordChanged implements PasswordChanged {
+class _$PasswordChanged
+    with DiagnosticableTreeMixin
+    implements PasswordChanged {
   const _$PasswordChanged(this.passwordStr) : assert(passwordStr != null);
 
   @override
   final String passwordStr;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormEvent.passwordChanged(passwordStr: $passwordStr)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignInFormEvent.passwordChanged'))
+      ..add(DiagnosticsProperty('passwordStr', passwordStr));
   }
 
   @override
@@ -314,13 +332,13 @@ class _$PasswordChanged implements PasswordChanged {
   TResult when<TResult extends Object>({
     @required TResult emailChanged(String emailStr),
     @required TResult passwordChanged(String passwordStr),
-    @required TResult registerEmailAndPasswordPressed(),
+    @required TResult registerWithEmailAndPasswordPressed(),
     @required TResult signInWithEmailAndPasswordPressed(),
     @required TResult signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
-    assert(registerEmailAndPasswordPressed != null);
+    assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return passwordChanged(passwordStr);
@@ -331,7 +349,7 @@ class _$PasswordChanged implements PasswordChanged {
   TResult maybeWhen<TResult extends Object>({
     TResult emailChanged(String emailStr),
     TResult passwordChanged(String passwordStr),
-    TResult registerEmailAndPasswordPressed(),
+    TResult registerWithEmailAndPasswordPressed(),
     TResult signInWithEmailAndPasswordPressed(),
     TResult signInWithGooglePressed(),
     @required TResult orElse(),
@@ -349,7 +367,7 @@ class _$PasswordChanged implements PasswordChanged {
     @required TResult emailChanged(EmailChanged value),
     @required TResult passwordChanged(PasswordChanged value),
     @required
-        TResult registerEmailAndPasswordPressed(
+        TResult registerWithEmailAndPasswordPressed(
             RegisterEmailAndPasswordPressed value),
     @required
         TResult signInWithEmailAndPasswordPressed(
@@ -358,7 +376,7 @@ class _$PasswordChanged implements PasswordChanged {
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
-    assert(registerEmailAndPasswordPressed != null);
+    assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return passwordChanged(this);
@@ -369,7 +387,7 @@ class _$PasswordChanged implements PasswordChanged {
   TResult maybeMap<TResult extends Object>({
     TResult emailChanged(EmailChanged value),
     TResult passwordChanged(PasswordChanged value),
-    TResult registerEmailAndPasswordPressed(
+    TResult registerWithEmailAndPasswordPressed(
         RegisterEmailAndPasswordPressed value),
     TResult signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
@@ -416,12 +434,21 @@ class _$RegisterEmailAndPasswordPressedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$RegisterEmailAndPasswordPressed
+    with DiagnosticableTreeMixin
     implements RegisterEmailAndPasswordPressed {
   const _$RegisterEmailAndPasswordPressed();
 
   @override
-  String toString() {
-    return 'SignInFormEvent.registerEmailAndPasswordPressed()';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SignInFormEvent.registerWithEmailAndPasswordPressed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'SignInFormEvent.registerWithEmailAndPasswordPressed'));
   }
 
   @override
@@ -437,16 +464,16 @@ class _$RegisterEmailAndPasswordPressed
   TResult when<TResult extends Object>({
     @required TResult emailChanged(String emailStr),
     @required TResult passwordChanged(String passwordStr),
-    @required TResult registerEmailAndPasswordPressed(),
+    @required TResult registerWithEmailAndPasswordPressed(),
     @required TResult signInWithEmailAndPasswordPressed(),
     @required TResult signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
-    assert(registerEmailAndPasswordPressed != null);
+    assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
-    return registerEmailAndPasswordPressed();
+    return registerWithEmailAndPasswordPressed();
   }
 
   @override
@@ -454,14 +481,14 @@ class _$RegisterEmailAndPasswordPressed
   TResult maybeWhen<TResult extends Object>({
     TResult emailChanged(String emailStr),
     TResult passwordChanged(String passwordStr),
-    TResult registerEmailAndPasswordPressed(),
+    TResult registerWithEmailAndPasswordPressed(),
     TResult signInWithEmailAndPasswordPressed(),
     TResult signInWithGooglePressed(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (registerEmailAndPasswordPressed != null) {
-      return registerEmailAndPasswordPressed();
+    if (registerWithEmailAndPasswordPressed != null) {
+      return registerWithEmailAndPasswordPressed();
     }
     return orElse();
   }
@@ -472,7 +499,7 @@ class _$RegisterEmailAndPasswordPressed
     @required TResult emailChanged(EmailChanged value),
     @required TResult passwordChanged(PasswordChanged value),
     @required
-        TResult registerEmailAndPasswordPressed(
+        TResult registerWithEmailAndPasswordPressed(
             RegisterEmailAndPasswordPressed value),
     @required
         TResult signInWithEmailAndPasswordPressed(
@@ -481,10 +508,10 @@ class _$RegisterEmailAndPasswordPressed
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
-    assert(registerEmailAndPasswordPressed != null);
+    assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
-    return registerEmailAndPasswordPressed(this);
+    return registerWithEmailAndPasswordPressed(this);
   }
 
   @override
@@ -492,7 +519,7 @@ class _$RegisterEmailAndPasswordPressed
   TResult maybeMap<TResult extends Object>({
     TResult emailChanged(EmailChanged value),
     TResult passwordChanged(PasswordChanged value),
-    TResult registerEmailAndPasswordPressed(
+    TResult registerWithEmailAndPasswordPressed(
         RegisterEmailAndPasswordPressed value),
     TResult signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
@@ -500,8 +527,8 @@ class _$RegisterEmailAndPasswordPressed
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (registerEmailAndPasswordPressed != null) {
-      return registerEmailAndPasswordPressed(this);
+    if (registerWithEmailAndPasswordPressed != null) {
+      return registerWithEmailAndPasswordPressed(this);
     }
     return orElse();
   }
@@ -536,12 +563,21 @@ class _$SignInWithEmailAndPasswordPressedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$SignInWithEmailAndPasswordPressed
+    with DiagnosticableTreeMixin
     implements SignInWithEmailAndPasswordPressed {
   const _$SignInWithEmailAndPasswordPressed();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormEvent.signInWithEmailAndPasswordPressed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'SignInFormEvent.signInWithEmailAndPasswordPressed'));
   }
 
   @override
@@ -558,13 +594,13 @@ class _$SignInWithEmailAndPasswordPressed
   TResult when<TResult extends Object>({
     @required TResult emailChanged(String emailStr),
     @required TResult passwordChanged(String passwordStr),
-    @required TResult registerEmailAndPasswordPressed(),
+    @required TResult registerWithEmailAndPasswordPressed(),
     @required TResult signInWithEmailAndPasswordPressed(),
     @required TResult signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
-    assert(registerEmailAndPasswordPressed != null);
+    assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return signInWithEmailAndPasswordPressed();
@@ -575,7 +611,7 @@ class _$SignInWithEmailAndPasswordPressed
   TResult maybeWhen<TResult extends Object>({
     TResult emailChanged(String emailStr),
     TResult passwordChanged(String passwordStr),
-    TResult registerEmailAndPasswordPressed(),
+    TResult registerWithEmailAndPasswordPressed(),
     TResult signInWithEmailAndPasswordPressed(),
     TResult signInWithGooglePressed(),
     @required TResult orElse(),
@@ -593,7 +629,7 @@ class _$SignInWithEmailAndPasswordPressed
     @required TResult emailChanged(EmailChanged value),
     @required TResult passwordChanged(PasswordChanged value),
     @required
-        TResult registerEmailAndPasswordPressed(
+        TResult registerWithEmailAndPasswordPressed(
             RegisterEmailAndPasswordPressed value),
     @required
         TResult signInWithEmailAndPasswordPressed(
@@ -602,7 +638,7 @@ class _$SignInWithEmailAndPasswordPressed
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
-    assert(registerEmailAndPasswordPressed != null);
+    assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return signInWithEmailAndPasswordPressed(this);
@@ -613,7 +649,7 @@ class _$SignInWithEmailAndPasswordPressed
   TResult maybeMap<TResult extends Object>({
     TResult emailChanged(EmailChanged value),
     TResult passwordChanged(PasswordChanged value),
-    TResult registerEmailAndPasswordPressed(
+    TResult registerWithEmailAndPasswordPressed(
         RegisterEmailAndPasswordPressed value),
     TResult signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
@@ -653,12 +689,22 @@ class _$SignInWithGooglePressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$SignInWithGooglePressed implements SignInWithGooglePressed {
+class _$SignInWithGooglePressed
+    with DiagnosticableTreeMixin
+    implements SignInWithGooglePressed {
   const _$SignInWithGooglePressed();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormEvent.signInWithGooglePressed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'SignInFormEvent.signInWithGooglePressed'));
   }
 
   @override
@@ -674,13 +720,13 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   TResult when<TResult extends Object>({
     @required TResult emailChanged(String emailStr),
     @required TResult passwordChanged(String passwordStr),
-    @required TResult registerEmailAndPasswordPressed(),
+    @required TResult registerWithEmailAndPasswordPressed(),
     @required TResult signInWithEmailAndPasswordPressed(),
     @required TResult signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
-    assert(registerEmailAndPasswordPressed != null);
+    assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return signInWithGooglePressed();
@@ -691,7 +737,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   TResult maybeWhen<TResult extends Object>({
     TResult emailChanged(String emailStr),
     TResult passwordChanged(String passwordStr),
-    TResult registerEmailAndPasswordPressed(),
+    TResult registerWithEmailAndPasswordPressed(),
     TResult signInWithEmailAndPasswordPressed(),
     TResult signInWithGooglePressed(),
     @required TResult orElse(),
@@ -709,7 +755,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     @required TResult emailChanged(EmailChanged value),
     @required TResult passwordChanged(PasswordChanged value),
     @required
-        TResult registerEmailAndPasswordPressed(
+        TResult registerWithEmailAndPasswordPressed(
             RegisterEmailAndPasswordPressed value),
     @required
         TResult signInWithEmailAndPasswordPressed(
@@ -718,7 +764,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
-    assert(registerEmailAndPasswordPressed != null);
+    assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return signInWithGooglePressed(this);
@@ -729,7 +775,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
   TResult maybeMap<TResult extends Object>({
     TResult emailChanged(EmailChanged value),
     TResult passwordChanged(PasswordChanged value),
-    TResult registerEmailAndPasswordPressed(
+    TResult registerWithEmailAndPasswordPressed(
         RegisterEmailAndPasswordPressed value),
     TResult signInWithEmailAndPasswordPressed(
         SignInWithEmailAndPasswordPressed value),
@@ -884,7 +930,9 @@ class __$SignInFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_SignInFormState implements _SignInFormState {
+class _$_SignInFormState
+    with DiagnosticableTreeMixin
+    implements _SignInFormState {
   const _$_SignInFormState(
       {@required this.emailAddress,
       @required this.password,
@@ -909,8 +957,21 @@ class _$_SignInFormState implements _SignInFormState {
   final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignInFormState(emailAddress: $emailAddress, password: $password, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignInFormState'))
+      ..add(DiagnosticsProperty('emailAddress', emailAddress))
+      ..add(DiagnosticsProperty('password', password))
+      ..add(DiagnosticsProperty('isSubmitting', isSubmitting))
+      ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
+      ..add(DiagnosticsProperty(
+          'authFailureOrSuccessOption', authFailureOrSuccessOption));
   }
 
   @override
