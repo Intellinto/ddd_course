@@ -14,14 +14,45 @@ class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
 // ignore: unused_element
-  InvalidEmail<T> invalidEmail<T>({@required String failedValue}) {
+  ExceedingLength<T> exceedingLength<T>(
+      {@required T failedValue, @required int max}) {
+    return ExceedingLength<T>(
+      failedValue: failedValue,
+      max: max,
+    );
+  }
+
+// ignore: unused_element
+  Empty<T> empty<T>({@required T failedValue}) {
+    return Empty<T>(
+      failedValue: failedValue,
+    );
+  }
+
+// ignore: unused_element
+  MultiLine<T> multiLine<T>({@required T failedValue}) {
+    return MultiLine<T>(
+      failedValue: failedValue,
+    );
+  }
+
+// ignore: unused_element
+  ListTooLong<T> listTooLong<T>({@required T failedValue, @required int max}) {
+    return ListTooLong<T>(
+      failedValue: failedValue,
+      max: max,
+    );
+  }
+
+// ignore: unused_element
+  InvalidEmail<T> invalidEmail<T>({@required T failedValue}) {
     return InvalidEmail<T>(
       failedValue: failedValue,
     );
   }
 
 // ignore: unused_element
-  ShortPassword<T> shortPassword<T>({@required String failedValue}) {
+  ShortPassword<T> shortPassword<T>({@required T failedValue}) {
     return ShortPassword<T>(
       failedValue: failedValue,
     );
@@ -34,26 +65,42 @@ const $ValueFailure = _$ValueFailureTearOff();
 
 /// @nodoc
 mixin _$ValueFailure<T> {
-  String get failedValue;
+  T get failedValue;
 
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult invalidEmail(String failedValue),
-    @required TResult shortPassword(String failedValue),
+    @required TResult exceedingLength(T failedValue, int max),
+    @required TResult empty(T failedValue),
+    @required TResult multiLine(T failedValue),
+    @required TResult listTooLong(T failedValue, int max),
+    @required TResult invalidEmail(T failedValue),
+    @required TResult shortPassword(T failedValue),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult invalidEmail(String failedValue),
-    TResult shortPassword(String failedValue),
+    TResult exceedingLength(T failedValue, int max),
+    TResult empty(T failedValue),
+    TResult multiLine(T failedValue),
+    TResult listTooLong(T failedValue, int max),
+    TResult invalidEmail(T failedValue),
+    TResult shortPassword(T failedValue),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult empty(Empty<T> value),
+    @required TResult multiLine(MultiLine<T> value),
+    @required TResult listTooLong(ListTooLong<T> value),
     @required TResult invalidEmail(InvalidEmail<T> value),
     @required TResult shortPassword(ShortPassword<T> value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult empty(Empty<T> value),
+    TResult multiLine(MultiLine<T> value),
+    TResult listTooLong(ListTooLong<T> value),
     TResult invalidEmail(InvalidEmail<T> value),
     TResult shortPassword(ShortPassword<T> value),
     @required TResult orElse(),
@@ -68,7 +115,7 @@ abstract class $ValueFailureCopyWith<T, $Res> {
   factory $ValueFailureCopyWith(
           ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
       _$ValueFailureCopyWithImpl<T, $Res>;
-  $Res call({String failedValue});
+  $Res call({T failedValue});
 }
 
 /// @nodoc
@@ -86,9 +133,618 @@ class _$ValueFailureCopyWithImpl<T, $Res>
   }) {
     return _then(_value.copyWith(
       failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+          failedValue == freezed ? _value.failedValue : failedValue as T,
     ));
   }
+}
+
+/// @nodoc
+abstract class $ExceedingLengthCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $ExceedingLengthCopyWith(
+          ExceedingLength<T> value, $Res Function(ExceedingLength<T>) then) =
+      _$ExceedingLengthCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue, int max});
+}
+
+/// @nodoc
+class _$ExceedingLengthCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $ExceedingLengthCopyWith<T, $Res> {
+  _$ExceedingLengthCopyWithImpl(
+      ExceedingLength<T> _value, $Res Function(ExceedingLength<T>) _then)
+      : super(_value, (v) => _then(v as ExceedingLength<T>));
+
+  @override
+  ExceedingLength<T> get _value => super._value as ExceedingLength<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+    Object max = freezed,
+  }) {
+    return _then(ExceedingLength<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+      max: max == freezed ? _value.max : max as int,
+    ));
+  }
+}
+
+/// @nodoc
+class _$ExceedingLength<T> implements ExceedingLength<T> {
+  const _$ExceedingLength({@required this.failedValue, @required this.max})
+      : assert(failedValue != null),
+        assert(max != null);
+
+  @override
+  final T failedValue;
+  @override
+  final int max;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.exceedingLength(failedValue: $failedValue, max: $max)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ExceedingLength<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)) &&
+            (identical(other.max, max) ||
+                const DeepCollectionEquality().equals(other.max, max)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(failedValue) ^
+      const DeepCollectionEquality().hash(max);
+
+  @JsonKey(ignore: true)
+  @override
+  $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith =>
+      _$ExceedingLengthCopyWithImpl<T, ExceedingLength<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult exceedingLength(T failedValue, int max),
+    @required TResult empty(T failedValue),
+    @required TResult multiLine(T failedValue),
+    @required TResult listTooLong(T failedValue, int max),
+    @required TResult invalidEmail(T failedValue),
+    @required TResult shortPassword(T failedValue),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    return exceedingLength(failedValue, max);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult exceedingLength(T failedValue, int max),
+    TResult empty(T failedValue),
+    TResult multiLine(T failedValue),
+    TResult listTooLong(T failedValue, int max),
+    TResult invalidEmail(T failedValue),
+    TResult shortPassword(T failedValue),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (exceedingLength != null) {
+      return exceedingLength(failedValue, max);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult empty(Empty<T> value),
+    @required TResult multiLine(MultiLine<T> value),
+    @required TResult listTooLong(ListTooLong<T> value),
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult shortPassword(ShortPassword<T> value),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    return exceedingLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult empty(Empty<T> value),
+    TResult multiLine(MultiLine<T> value),
+    TResult listTooLong(ListTooLong<T> value),
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult shortPassword(ShortPassword<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (exceedingLength != null) {
+      return exceedingLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ExceedingLength<T> implements ValueFailure<T> {
+  const factory ExceedingLength({@required T failedValue, @required int max}) =
+      _$ExceedingLength<T>;
+
+  @override
+  T get failedValue;
+  int get max;
+  @override
+  @JsonKey(ignore: true)
+  $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $EmptyCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $EmptyCopyWith(Empty<T> value, $Res Function(Empty<T>) then) =
+      _$EmptyCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $EmptyCopyWith<T, $Res> {
+  _$EmptyCopyWithImpl(Empty<T> _value, $Res Function(Empty<T>) _then)
+      : super(_value, (v) => _then(v as Empty<T>));
+
+  @override
+  Empty<T> get _value => super._value as Empty<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(Empty<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+    ));
+  }
+}
+
+/// @nodoc
+class _$Empty<T> implements Empty<T> {
+  const _$Empty({@required this.failedValue}) : assert(failedValue != null);
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.empty(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Empty<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @JsonKey(ignore: true)
+  @override
+  $EmptyCopyWith<T, Empty<T>> get copyWith =>
+      _$EmptyCopyWithImpl<T, Empty<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult exceedingLength(T failedValue, int max),
+    @required TResult empty(T failedValue),
+    @required TResult multiLine(T failedValue),
+    @required TResult listTooLong(T failedValue, int max),
+    @required TResult invalidEmail(T failedValue),
+    @required TResult shortPassword(T failedValue),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    return empty(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult exceedingLength(T failedValue, int max),
+    TResult empty(T failedValue),
+    TResult multiLine(T failedValue),
+    TResult listTooLong(T failedValue, int max),
+    TResult invalidEmail(T failedValue),
+    TResult shortPassword(T failedValue),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (empty != null) {
+      return empty(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult empty(Empty<T> value),
+    @required TResult multiLine(MultiLine<T> value),
+    @required TResult listTooLong(ListTooLong<T> value),
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult shortPassword(ShortPassword<T> value),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult empty(Empty<T> value),
+    TResult multiLine(MultiLine<T> value),
+    TResult listTooLong(ListTooLong<T> value),
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult shortPassword(ShortPassword<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Empty<T> implements ValueFailure<T> {
+  const factory Empty({@required T failedValue}) = _$Empty<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $EmptyCopyWith<T, Empty<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $MultiLineCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $MultiLineCopyWith(
+          MultiLine<T> value, $Res Function(MultiLine<T>) then) =
+      _$MultiLineCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$MultiLineCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $MultiLineCopyWith<T, $Res> {
+  _$MultiLineCopyWithImpl(
+      MultiLine<T> _value, $Res Function(MultiLine<T>) _then)
+      : super(_value, (v) => _then(v as MultiLine<T>));
+
+  @override
+  MultiLine<T> get _value => super._value as MultiLine<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(MultiLine<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+    ));
+  }
+}
+
+/// @nodoc
+class _$MultiLine<T> implements MultiLine<T> {
+  const _$MultiLine({@required this.failedValue}) : assert(failedValue != null);
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.multiLine(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is MultiLine<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @JsonKey(ignore: true)
+  @override
+  $MultiLineCopyWith<T, MultiLine<T>> get copyWith =>
+      _$MultiLineCopyWithImpl<T, MultiLine<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult exceedingLength(T failedValue, int max),
+    @required TResult empty(T failedValue),
+    @required TResult multiLine(T failedValue),
+    @required TResult listTooLong(T failedValue, int max),
+    @required TResult invalidEmail(T failedValue),
+    @required TResult shortPassword(T failedValue),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    return multiLine(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult exceedingLength(T failedValue, int max),
+    TResult empty(T failedValue),
+    TResult multiLine(T failedValue),
+    TResult listTooLong(T failedValue, int max),
+    TResult invalidEmail(T failedValue),
+    TResult shortPassword(T failedValue),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (multiLine != null) {
+      return multiLine(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult empty(Empty<T> value),
+    @required TResult multiLine(MultiLine<T> value),
+    @required TResult listTooLong(ListTooLong<T> value),
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult shortPassword(ShortPassword<T> value),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    return multiLine(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult empty(Empty<T> value),
+    TResult multiLine(MultiLine<T> value),
+    TResult listTooLong(ListTooLong<T> value),
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult shortPassword(ShortPassword<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (multiLine != null) {
+      return multiLine(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MultiLine<T> implements ValueFailure<T> {
+  const factory MultiLine({@required T failedValue}) = _$MultiLine<T>;
+
+  @override
+  T get failedValue;
+  @override
+  @JsonKey(ignore: true)
+  $MultiLineCopyWith<T, MultiLine<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $ListTooLongCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $ListTooLongCopyWith(
+          ListTooLong<T> value, $Res Function(ListTooLong<T>) then) =
+      _$ListTooLongCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue, int max});
+}
+
+/// @nodoc
+class _$ListTooLongCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $ListTooLongCopyWith<T, $Res> {
+  _$ListTooLongCopyWithImpl(
+      ListTooLong<T> _value, $Res Function(ListTooLong<T>) _then)
+      : super(_value, (v) => _then(v as ListTooLong<T>));
+
+  @override
+  ListTooLong<T> get _value => super._value as ListTooLong<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+    Object max = freezed,
+  }) {
+    return _then(ListTooLong<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+      max: max == freezed ? _value.max : max as int,
+    ));
+  }
+}
+
+/// @nodoc
+class _$ListTooLong<T> implements ListTooLong<T> {
+  const _$ListTooLong({@required this.failedValue, @required this.max})
+      : assert(failedValue != null),
+        assert(max != null);
+
+  @override
+  final T failedValue;
+  @override
+  final int max;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.listTooLong(failedValue: $failedValue, max: $max)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ListTooLong<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)) &&
+            (identical(other.max, max) ||
+                const DeepCollectionEquality().equals(other.max, max)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(failedValue) ^
+      const DeepCollectionEquality().hash(max);
+
+  @JsonKey(ignore: true)
+  @override
+  $ListTooLongCopyWith<T, ListTooLong<T>> get copyWith =>
+      _$ListTooLongCopyWithImpl<T, ListTooLong<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult exceedingLength(T failedValue, int max),
+    @required TResult empty(T failedValue),
+    @required TResult multiLine(T failedValue),
+    @required TResult listTooLong(T failedValue, int max),
+    @required TResult invalidEmail(T failedValue),
+    @required TResult shortPassword(T failedValue),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    return listTooLong(failedValue, max);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult exceedingLength(T failedValue, int max),
+    TResult empty(T failedValue),
+    TResult multiLine(T failedValue),
+    TResult listTooLong(T failedValue, int max),
+    TResult invalidEmail(T failedValue),
+    TResult shortPassword(T failedValue),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (listTooLong != null) {
+      return listTooLong(failedValue, max);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult empty(Empty<T> value),
+    @required TResult multiLine(MultiLine<T> value),
+    @required TResult listTooLong(ListTooLong<T> value),
+    @required TResult invalidEmail(InvalidEmail<T> value),
+    @required TResult shortPassword(ShortPassword<T> value),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    return listTooLong(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult empty(Empty<T> value),
+    TResult multiLine(MultiLine<T> value),
+    TResult listTooLong(ListTooLong<T> value),
+    TResult invalidEmail(InvalidEmail<T> value),
+    TResult shortPassword(ShortPassword<T> value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (listTooLong != null) {
+      return listTooLong(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ListTooLong<T> implements ValueFailure<T> {
+  const factory ListTooLong({@required T failedValue, @required int max}) =
+      _$ListTooLong<T>;
+
+  @override
+  T get failedValue;
+  int get max;
+  @override
+  @JsonKey(ignore: true)
+  $ListTooLongCopyWith<T, ListTooLong<T>> get copyWith;
 }
 
 /// @nodoc
@@ -98,7 +754,7 @@ abstract class $InvalidEmailCopyWith<T, $Res>
           InvalidEmail<T> value, $Res Function(InvalidEmail<T>) then) =
       _$InvalidEmailCopyWithImpl<T, $Res>;
   @override
-  $Res call({String failedValue});
+  $Res call({T failedValue});
 }
 
 /// @nodoc
@@ -118,7 +774,7 @@ class _$InvalidEmailCopyWithImpl<T, $Res>
   }) {
     return _then(InvalidEmail<T>(
       failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+          failedValue == freezed ? _value.failedValue : failedValue as T,
     ));
   }
 }
@@ -129,7 +785,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
       : assert(failedValue != null);
 
   @override
-  final String failedValue;
+  final T failedValue;
 
   @override
   String toString() {
@@ -157,9 +813,17 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult invalidEmail(String failedValue),
-    @required TResult shortPassword(String failedValue),
+    @required TResult exceedingLength(T failedValue, int max),
+    @required TResult empty(T failedValue),
+    @required TResult multiLine(T failedValue),
+    @required TResult listTooLong(T failedValue, int max),
+    @required TResult invalidEmail(T failedValue),
+    @required TResult shortPassword(T failedValue),
   }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     return invalidEmail(failedValue);
@@ -168,8 +832,12 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult invalidEmail(String failedValue),
-    TResult shortPassword(String failedValue),
+    TResult exceedingLength(T failedValue, int max),
+    TResult empty(T failedValue),
+    TResult multiLine(T failedValue),
+    TResult listTooLong(T failedValue, int max),
+    TResult invalidEmail(T failedValue),
+    TResult shortPassword(T failedValue),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -182,9 +850,17 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult empty(Empty<T> value),
+    @required TResult multiLine(MultiLine<T> value),
+    @required TResult listTooLong(ListTooLong<T> value),
     @required TResult invalidEmail(InvalidEmail<T> value),
     @required TResult shortPassword(ShortPassword<T> value),
   }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     return invalidEmail(this);
@@ -193,6 +869,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult empty(Empty<T> value),
+    TResult multiLine(MultiLine<T> value),
+    TResult listTooLong(ListTooLong<T> value),
     TResult invalidEmail(InvalidEmail<T> value),
     TResult shortPassword(ShortPassword<T> value),
     @required TResult orElse(),
@@ -206,11 +886,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
 }
 
 abstract class InvalidEmail<T> implements ValueFailure<T> {
-  const factory InvalidEmail({@required String failedValue}) =
-      _$InvalidEmail<T>;
+  const factory InvalidEmail({@required T failedValue}) = _$InvalidEmail<T>;
 
   @override
-  String get failedValue;
+  T get failedValue;
   @override
   @JsonKey(ignore: true)
   $InvalidEmailCopyWith<T, InvalidEmail<T>> get copyWith;
@@ -223,7 +902,7 @@ abstract class $ShortPasswordCopyWith<T, $Res>
           ShortPassword<T> value, $Res Function(ShortPassword<T>) then) =
       _$ShortPasswordCopyWithImpl<T, $Res>;
   @override
-  $Res call({String failedValue});
+  $Res call({T failedValue});
 }
 
 /// @nodoc
@@ -243,7 +922,7 @@ class _$ShortPasswordCopyWithImpl<T, $Res>
   }) {
     return _then(ShortPassword<T>(
       failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as String,
+          failedValue == freezed ? _value.failedValue : failedValue as T,
     ));
   }
 }
@@ -254,7 +933,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
       : assert(failedValue != null);
 
   @override
-  final String failedValue;
+  final T failedValue;
 
   @override
   String toString() {
@@ -282,9 +961,17 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult invalidEmail(String failedValue),
-    @required TResult shortPassword(String failedValue),
+    @required TResult exceedingLength(T failedValue, int max),
+    @required TResult empty(T failedValue),
+    @required TResult multiLine(T failedValue),
+    @required TResult listTooLong(T failedValue, int max),
+    @required TResult invalidEmail(T failedValue),
+    @required TResult shortPassword(T failedValue),
   }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     return shortPassword(failedValue);
@@ -293,8 +980,12 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult invalidEmail(String failedValue),
-    TResult shortPassword(String failedValue),
+    TResult exceedingLength(T failedValue, int max),
+    TResult empty(T failedValue),
+    TResult multiLine(T failedValue),
+    TResult listTooLong(T failedValue, int max),
+    TResult invalidEmail(T failedValue),
+    TResult shortPassword(T failedValue),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -307,9 +998,17 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult empty(Empty<T> value),
+    @required TResult multiLine(MultiLine<T> value),
+    @required TResult listTooLong(ListTooLong<T> value),
     @required TResult invalidEmail(InvalidEmail<T> value),
     @required TResult shortPassword(ShortPassword<T> value),
   }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiLine != null);
+    assert(listTooLong != null);
     assert(invalidEmail != null);
     assert(shortPassword != null);
     return shortPassword(this);
@@ -318,6 +1017,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult exceedingLength(ExceedingLength<T> value),
+    TResult empty(Empty<T> value),
+    TResult multiLine(MultiLine<T> value),
+    TResult listTooLong(ListTooLong<T> value),
     TResult invalidEmail(InvalidEmail<T> value),
     TResult shortPassword(ShortPassword<T> value),
     @required TResult orElse(),
@@ -331,11 +1034,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
 }
 
 abstract class ShortPassword<T> implements ValueFailure<T> {
-  const factory ShortPassword({@required String failedValue}) =
-      _$ShortPassword<T>;
+  const factory ShortPassword({@required T failedValue}) = _$ShortPassword<T>;
 
   @override
-  String get failedValue;
+  T get failedValue;
   @override
   @JsonKey(ignore: true)
   $ShortPasswordCopyWith<T, ShortPassword<T>> get copyWith;

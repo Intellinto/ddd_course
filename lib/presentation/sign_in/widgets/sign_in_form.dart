@@ -20,7 +20,7 @@ class SignInForm extends StatelessWidget {
                                 emailAlreadyInUse: (_) =>
                                     'Email already in use',
                                 invalidEmailPasswordCombo: (_) =>
-                                    'Ivalid email and password combination'),
+                                    'Invalid email and password combination'),
                           ).show(context)
                         },
                     (_) => {})
@@ -31,6 +31,7 @@ class SignInForm extends StatelessWidget {
             ? AutovalidateMode.always
             : AutovalidateMode.disabled,
         child: ListView(
+          padding: const EdgeInsets.all(8),
           children: [
             const Text(
               '📒',
@@ -129,6 +130,15 @@ class SignInForm extends StatelessWidget {
               ),
               child: const Text('SIGN IN WITH GOOGLE'),
             ),
+            if (state.isSubmitting) ...[
+              const SizedBox(
+                height: 8,
+              ),
+              const LinearProgressIndicator(
+                // ignore: avoid_redundant_argument_values
+                value: null,
+              ),
+            ],
           ],
         ),
       );

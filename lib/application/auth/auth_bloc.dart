@@ -12,14 +12,22 @@ part 'auth_bloc.freezed.dart';
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthFacade _authFacade;
-  AuthBloc(this._authFacade) : super(AuthState.initial());
 
-  // AuthBloc() : super(_Initial());
+  AuthBloc(this._authFacade) : super(const AuthState.initial());
 
   @override
   Stream<AuthState> mapEventToState(
     AuthEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    yield* event.map(authCheckRequested: (e) async* {
+      final userOption = _authFacade.getSignedInUser();
+      yield userOption.fold(
+        () => const AuthState.unAuthenticated(),
+        (_) => const AuthState.authenticated(),
+      );
+    }, signedOut: (e) async* {
+      await _authFacade.signOut();
+      yield const AuthState.unAuthenticated();
+    });
   }
 }
