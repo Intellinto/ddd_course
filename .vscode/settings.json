@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "lib/**/**.freezed.dart": false,
+        "lib/**/**.gr.dart": true,
+        "lib\\infrastructure\\notes/note_dtos.g.dart": true
+    },
+    "explorerExclude.backup": null
+}
