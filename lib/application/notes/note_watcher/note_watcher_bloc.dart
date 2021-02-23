@@ -52,4 +52,10 @@ class NoteWatcherBloc extends Bloc<NoteWatcherEvent, NoteWatcherState> {
       },
     );
   }
+
+  @override
+  Future<void> close() async {
+    await _noteStreamSubscription.cancel();
+    return super.close();
+  }
 }
