@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  another_flushbar: ^1.10.8
+  another_flushbar: ^1.10.11
   auto_route: ^0.6.9
   cloud_firestore: ^0.16.0+1
   cupertino_icons: ^1.0.2
