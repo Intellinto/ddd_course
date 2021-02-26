@@ -18,17 +18,8 @@ abstract class NoteDto implements _$NoteDto {
     @required String body,
     @required int color,
     @required List<TodoItemDto> todos,
-    @required @ServerTimeStampConverter() FieldValue serverTimeStamp,
+    @required @ServerTimestampConverter() FieldValue serverTimeStamp,
   }) = _NoteDto;
-
-  factory NoteDto.fromJson(Map<String, dynamic> json) =>
-      _$NoteDtoFromJson(json);
-
-  factory NoteDto.fromFireStore(DocumentSnapshot doc) {
-    return NoteDto.fromJson(
-      doc.data(),
-    ).copyWith(id: doc.id);
-  }
 
   factory NoteDto.fromDomain(Note note) {
     return NoteDto(
@@ -50,19 +41,21 @@ abstract class NoteDto implements _$NoteDto {
       id: UniqueId.fromUniqueString(id),
       body: NoteBody(body),
       color: NoteColor(Color(color)),
-      todos: List3(
-        todos
-            .map(
-              (dto) => dto.toDomain(),
-            )
-            .toImmutableList(),
-      ),
+      todos: List3(todos.map((dto) => dto.toDomain()).toImmutableList()),
     );
+  }
+
+  factory NoteDto.fromJson(Map<String, dynamic> json) =>
+      _$NoteDtoFromJson(json);
+
+  factory NoteDto.fromFirestore(DocumentSnapshot doc) {
+    return NoteDto.fromJson(doc.data()).copyWith(id: doc.id);
   }
 }
 
-class ServerTimeStampConverter implements JsonConverter<FieldValue, Object> {
-  const ServerTimeStampConverter();
+class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
+  const ServerTimestampConverter();
+
   @override
   FieldValue fromJson(Object json) {
     return FieldValue.serverTimestamp();
@@ -75,6 +68,7 @@ class ServerTimeStampConverter implements JsonConverter<FieldValue, Object> {
 @freezed
 abstract class TodoItemDto implements _$TodoItemDto {
   const TodoItemDto._();
+
   const factory TodoItemDto({
     @required String id,
     @required String name,

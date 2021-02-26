@@ -26,12 +26,12 @@ class NoteRepository implements INoteRepository {
         .map(
           (snapShot) => right<NoteFailure, KtList<Note>>(
             snapShot.docs
-                .map((doc) => NoteDto.fromFireStore(doc).toDomain())
+                .map((doc) => NoteDto.fromFirestore(doc).toDomain())
                 .toImmutableList(),
           ),
         )
         .onErrorReturnWith((e) {
-      if (e is PlatformException && e.message.contains('permission-denied')) {
+      if (e is FirebaseException && e.code.contains('permission-denied')) {
         return left(const NoteFailure.insuffecientPermissions());
       } else {
         // maybe log error here
@@ -48,7 +48,7 @@ class NoteRepository implements INoteRepository {
         .snapshots()
         .map(
           (snapShot) =>
-              snapShot.docs.map((doc) => NoteDto.fromFireStore(doc).toDomain()),
+              snapShot.docs.map((doc) => NoteDto.fromFirestore(doc).toDomain()),
         )
         .map((notes) => right<NoteFailure, KtList<Note>>(
               notes
