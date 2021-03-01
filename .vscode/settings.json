@@ -7,7 +7,8 @@
         "**/.DS_Store": false,
         "lib/**/**.freezed.dart": false,
         "lib/**/**.gr.dart": false,
-        "lib\\infrastructure\\notes/note_dtos.g.dart": false
+        "lib\\infrastructure\\notes/note_dtos.g.dart": false,
+        "**/injection.config.dart": false
     },
     "explorerExclude.backup": null
 }

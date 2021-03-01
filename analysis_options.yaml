@@ -6,4 +6,12 @@ analyzer:
     missing_required_param: error
     must_be_immutable: error
     sort_unnamed_constructors_first: ignore
-  exclude: [build/**, lib/**/**.freezed.dart, lib/**/**.gr.dart, lib/**/**.g.dart]
+  exclude:
+    [
+      build/**,
+      integration_test/**,
+      lib/**/**.freezed.dart,
+      lib/**/**.gr.dart,
+      lib/**/**.g.dart,
+      lib/**.config.dart
+    ]
