@@ -801,13 +801,13 @@ class _$NoteFormStateTearOff {
 // ignore: unused_element
   _NoteFormState call(
       {@required Note note,
-      @required bool showErrorMessage,
+      @required bool showErrorMessages,
       @required bool isEditing,
       @required bool isSaving,
       @required Option<Either<NoteFailure, Unit>> saveFailureOrSuccessOption}) {
     return _NoteFormState(
       note: note,
-      showErrorMessage: showErrorMessage,
+      showErrorMessages: showErrorMessages,
       isEditing: isEditing,
       isSaving: isSaving,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption,
@@ -822,7 +822,7 @@ const $NoteFormState = _$NoteFormStateTearOff();
 /// @nodoc
 mixin _$NoteFormState {
   Note get note;
-  bool get showErrorMessage;
+  bool get showErrorMessages;
   bool get isEditing;
   bool get isSaving;
   Option<Either<NoteFailure, Unit>> get saveFailureOrSuccessOption;
@@ -838,7 +838,7 @@ abstract class $NoteFormStateCopyWith<$Res> {
       _$NoteFormStateCopyWithImpl<$Res>;
   $Res call(
       {Note note,
-      bool showErrorMessage,
+      bool showErrorMessages,
       bool isEditing,
       bool isSaving,
       Option<Either<NoteFailure, Unit>> saveFailureOrSuccessOption});
@@ -858,16 +858,16 @@ class _$NoteFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object note = freezed,
-    Object showErrorMessage = freezed,
+    Object showErrorMessages = freezed,
     Object isEditing = freezed,
     Object isSaving = freezed,
     Object saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
       note: note == freezed ? _value.note : note as Note,
-      showErrorMessage: showErrorMessage == freezed
-          ? _value.showErrorMessage
-          : showErrorMessage as bool,
+      showErrorMessages: showErrorMessages == freezed
+          ? _value.showErrorMessages
+          : showErrorMessages as bool,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
@@ -896,7 +896,7 @@ abstract class _$NoteFormStateCopyWith<$Res>
   @override
   $Res call(
       {Note note,
-      bool showErrorMessage,
+      bool showErrorMessages,
       bool isEditing,
       bool isSaving,
       Option<Either<NoteFailure, Unit>> saveFailureOrSuccessOption});
@@ -919,16 +919,16 @@ class __$NoteFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object note = freezed,
-    Object showErrorMessage = freezed,
+    Object showErrorMessages = freezed,
     Object isEditing = freezed,
     Object isSaving = freezed,
     Object saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_NoteFormState(
       note: note == freezed ? _value.note : note as Note,
-      showErrorMessage: showErrorMessage == freezed
-          ? _value.showErrorMessage
-          : showErrorMessage as bool,
+      showErrorMessages: showErrorMessages == freezed
+          ? _value.showErrorMessages
+          : showErrorMessages as bool,
       isEditing: isEditing == freezed ? _value.isEditing : isEditing as bool,
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
@@ -942,12 +942,12 @@ class __$NoteFormStateCopyWithImpl<$Res>
 class _$_NoteFormState with DiagnosticableTreeMixin implements _NoteFormState {
   const _$_NoteFormState(
       {@required this.note,
-      @required this.showErrorMessage,
+      @required this.showErrorMessages,
       @required this.isEditing,
       @required this.isSaving,
       @required this.saveFailureOrSuccessOption})
       : assert(note != null),
-        assert(showErrorMessage != null),
+        assert(showErrorMessages != null),
         assert(isEditing != null),
         assert(isSaving != null),
         assert(saveFailureOrSuccessOption != null);
@@ -955,7 +955,7 @@ class _$_NoteFormState with DiagnosticableTreeMixin implements _NoteFormState {
   @override
   final Note note;
   @override
-  final bool showErrorMessage;
+  final bool showErrorMessages;
   @override
   final bool isEditing;
   @override
@@ -965,7 +965,7 @@ class _$_NoteFormState with DiagnosticableTreeMixin implements _NoteFormState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'NoteFormState(note: $note, showErrorMessage: $showErrorMessage, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'NoteFormState(note: $note, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -974,7 +974,7 @@ class _$_NoteFormState with DiagnosticableTreeMixin implements _NoteFormState {
     properties
       ..add(DiagnosticsProperty('type', 'NoteFormState'))
       ..add(DiagnosticsProperty('note', note))
-      ..add(DiagnosticsProperty('showErrorMessage', showErrorMessage))
+      ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
       ..add(DiagnosticsProperty('isEditing', isEditing))
       ..add(DiagnosticsProperty('isSaving', isSaving))
       ..add(DiagnosticsProperty(
@@ -987,9 +987,9 @@ class _$_NoteFormState with DiagnosticableTreeMixin implements _NoteFormState {
         (other is _NoteFormState &&
             (identical(other.note, note) ||
                 const DeepCollectionEquality().equals(other.note, note)) &&
-            (identical(other.showErrorMessage, showErrorMessage) ||
+            (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
-                    .equals(other.showErrorMessage, showErrorMessage)) &&
+                    .equals(other.showErrorMessages, showErrorMessages)) &&
             (identical(other.isEditing, isEditing) ||
                 const DeepCollectionEquality()
                     .equals(other.isEditing, isEditing)) &&
@@ -1007,7 +1007,7 @@ class _$_NoteFormState with DiagnosticableTreeMixin implements _NoteFormState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(note) ^
-      const DeepCollectionEquality().hash(showErrorMessage) ^
+      const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(isSaving) ^
       const DeepCollectionEquality().hash(saveFailureOrSuccessOption);
@@ -1023,7 +1023,7 @@ abstract class _NoteFormState implements NoteFormState {
           {@required
               Note note,
           @required
-              bool showErrorMessage,
+              bool showErrorMessages,
           @required
               bool isEditing,
           @required
@@ -1035,7 +1035,7 @@ abstract class _NoteFormState implements NoteFormState {
   @override
   Note get note;
   @override
-  bool get showErrorMessage;
+  bool get showErrorMessages;
   @override
   bool get isEditing;
   @override
