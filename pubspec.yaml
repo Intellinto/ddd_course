@@ -39,7 +39,8 @@ dependencies:
   json_annotation: 
   kt_dart: 
   rxdart: 
-  uuid: 
+  uuid:
+  provider: 
 
 dev_dependencies:
   flutter_test:
